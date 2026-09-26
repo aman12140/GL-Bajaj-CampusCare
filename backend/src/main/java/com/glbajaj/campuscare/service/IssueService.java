@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -352,7 +353,7 @@ public class IssueService {
         h.setNewStatus(newStatus);
         h.setChangedBy(by);
         h.setComment(comment != null && comment.length() > 1000 ? comment.substring(0, 1000) : comment);
-        h.setChangedAt(LocalDateTime.now());
+       h.setChangedAt(LocalDateTime.now());
         historyRepository.save(h);
     }
 
