@@ -25,6 +25,7 @@ import Notifications from './pages/shared/Notifications';
 import Profile from './pages/shared/Profile';
 import NotFound from './pages/shared/NotFound';
 
+
 const shell = (role) => (
   <ProtectedRoute role={role}>
     <DashboardLayout />

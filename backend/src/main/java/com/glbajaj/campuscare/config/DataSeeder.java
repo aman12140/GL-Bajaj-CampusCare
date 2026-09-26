@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -334,7 +335,7 @@ public class DataSeeder implements CommandLineRunner {
     }
 
     private void seedIssues(User admin, List<Student> students, Map<String, Staff> staffByKey) {
-        LocalDateTime now = LocalDateTime.now();
+       LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
         int number = 1001;
         for (DemoIssue d : demoIssues()) {
             Student student = students.get(d.student());

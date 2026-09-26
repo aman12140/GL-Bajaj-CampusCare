@@ -90,7 +90,7 @@ export default function DashboardLayout() {
         <main id="content" className="content"><Outlet /></main>
         <footer className="app-footer">
           <Logo height={28} />
-          <span>GL Bajaj CampusCare - college project. Demo data is fictional.</span>
+           <span>© 2026 CampusCare | Created & Developed by Aman Gupta</span>
         </footer>
       </div>
     </div>
