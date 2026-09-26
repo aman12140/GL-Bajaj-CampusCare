@@ -1,0 +1,45 @@
+# GL Bajaj CampusCare - main configuration.
+# Every secret / environment-specific value can be overridden with an environment variable.
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gl-bajaj-campuscare
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/gl_bajaj_campuscare?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:220324}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}   # "update" creates/updates tables automatically. Use "none" if you load database/schema.sql yourself.
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 8MB
+
+app:
+  jwt:
+    # MUST be at least 32 characters. The default below is for local development ONLY.
+    secret: ${JWT_SECRET:dev-only-secret-change-me-please-0123456789-abcdef}
+    expiration-hours: 12
+  upload-dir: ${UPLOAD_DIR:uploads}
+  cors-allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:4173}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  # Demo mode: seeds demo students, staff and sample issues on first start. Set to false for a clean install
+  # (departments, categories, locations and the admin account are always created if missing).
+  seed-demo-data: ${SEED_DEMO_DATA:true}
+  # Development-friendly forgot-password: the reset link is returned in the API response and logged.
+  # In production set to false and integrate an email service (see README - Future Enhancements).
+  expose-reset-link: ${EXPOSE_RESET_LINK:true}
+  # Demo SLA targets (hours) - configurable project/demo values, NOT official GL Bajaj policy.
+  sla:
+    low-hours: 72
+    medium-hours: 48
+    high-hours: 24
+    critical-hours: 6
+
+logging:
+  level:
+    com.glbajaj.campuscare: INFO
