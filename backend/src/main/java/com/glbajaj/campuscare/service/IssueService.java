@@ -84,6 +84,8 @@ public class IssueService {
         issue.setRoomNumber(blankToNull(req.roomNumber()));
         issue.setImageUrl(fileStorage.store(photo, "issues"));
         issue = issueRepository.save(issue);
+
+System.out.println("ISSUE CREATED AT = " + issue.getCreatedAt());
         issue.setIssueNumber("CC-" + (1000 + issue.getId()));      // CC-1001, CC-1002 ...
 
         addHistory(issue, null, IssueStatus.REPORTED, user, "Issue reported");
@@ -353,7 +355,7 @@ public class IssueService {
         h.setNewStatus(newStatus);
         h.setChangedBy(by);
         h.setComment(comment != null && comment.length() > 1000 ? comment.substring(0, 1000) : comment);
-       h.setChangedAt(LocalDateTime.now());
+       h.setChangedAt(LocalDateTime.now(ZoneId.of("Asia/Kolkata")));
         historyRepository.save(h);
     }
 
