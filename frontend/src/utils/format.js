@@ -1,14 +1,33 @@
 export function fmtDate(iso) {
   if (!iso) return '-';
+
   const d = new Date(iso);
+
   if (Number.isNaN(d.getTime())) return '-';
-  return d.toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  return d.toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 }
 
 export function fmtDay(iso) {
   if (!iso) return '-';
+
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? '-' : d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+  return Number.isNaN(d.getTime())
+    ? '-'
+    : d.toLocaleDateString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      });
 }
 
 export function statusLabel(s) {
